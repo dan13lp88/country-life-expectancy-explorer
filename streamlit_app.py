@@ -150,8 +150,15 @@ comparison = comparison.sort_values("Year")
 
 # Display comparison table
 st.subheader("Comparison Results")
+
+formatted_comparison = comparison.style.format({
+    country_1: "{:.2f}",
+    country_2: "{:.2f}",
+    difference_column: "{:.2f}"
+})
+
 st.dataframe(
-    comparison,
+    formatted_comparison,
     use_container_width=True,
     hide_index=True
 )
