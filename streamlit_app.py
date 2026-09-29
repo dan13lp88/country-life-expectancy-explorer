@@ -79,10 +79,9 @@ st.image("MilnovaLogo2.png", width=220)
 
 # App heading
 st.title("Compare Life Expectancy by Country")
-st.caption("Your Startup Company Name")
+st.caption("Milnova Software Solutions")
 st.write(
-    "Select two countries and a year range to compare life expectancy "
-    "trends and the difference between them."
+    "Explore life expectancy trends and compare two countries across a selected year range."
 )
 
 # Available selections
