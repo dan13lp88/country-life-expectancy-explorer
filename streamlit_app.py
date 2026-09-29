@@ -75,13 +75,14 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-header_logo, header_title = st.columns([1, 8])
+header_logo, header_title = st.columns([2, 7])
 
 with header_logo:
-    st.image("MilnovaLogo.png", width=85)
+    st.image("MilnovaLogo.png", width=180)
 
 with header_title:
     st.title("Compare Life Expectancy by Country")
+    st.caption("Your Startup Company Name")
     st.write(
         "Select two countries and a year range to compare life expectancy "
         "trends and the difference between them."
