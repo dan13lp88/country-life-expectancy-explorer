@@ -91,7 +91,7 @@ dark_logo = base64.b64encode(
 ).decode("utf-8")
 
 light_logo = base64.b64encode(
-    Path("MilnovaLogoUpdateLIGHT.svg").read_bytes()
+    Path("MilnovaLogoUpdateLIGHTMODE.svg").read_bytes()
 ).decode("utf-8")
 
 # Show the appropriate logo based on the visitor's device/browser theme
