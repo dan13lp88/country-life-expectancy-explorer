@@ -75,10 +75,16 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-st.title("Compare Life Expectancy by Country")
-st.write(
-    "Select two countries and a year range to compare life expectancy trends "
-    "and the difference between them."
+header_logo, header_title = st.columns([1, 8])
+
+with header_logo:
+    st.image("logo.png", width=85)
+
+with header_title:
+    st.title("Compare Life Expectancy by Country")
+    st.write(
+        "Select two countries and a year range to compare life expectancy "
+        "trends and the difference between them."
 )
 
 # Available selections
