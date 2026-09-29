@@ -77,12 +77,16 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
+is_light_theme = st.context.theme.type == "light"
+
+# Default the toggle based on the active Streamlit theme.
 use_light_logo = st.toggle(
     "Use light-background logo",
-    value=False,
-    help="Turn this on when viewing the app with a light background."
+    value=is_light_theme,
+    help="This defaults based on your Streamlit light/dark theme setting."
 )
 
+# Display the matching logo.
 if use_light_logo:
     st.image("MilnovaLogoUpdateLIGHT.svg", width=220)
 else:
