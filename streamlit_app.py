@@ -125,6 +125,7 @@ st.markdown(
     />
     """,
     unsafe_allow_html=True
+)
 
 # App heading
 st.title("Compare Life Expectancy by Country")
