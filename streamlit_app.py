@@ -77,65 +77,20 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-dark_logo = base64.b64encode(
-    Path("MilnovaLogoUpdateDARK.svg").read_bytes()
-).decode("utf-8")
+use_light_logo = st.toggle(
+    "Use light-background logo",
+    value=False,
+    help="Turn this on when viewing the app with a light background."
+)
 
-light_logo = base64.b64encode(
-    Path("MilnovaLogoUpdateLIGHT.svg").read_bytes()
-).decode("utf-8")
+if use_light_logo:
+    st.image("MilnovaLogoUpdateLIGHT.svg", width=220)
+else:
+    st.image("MilnovaLogoUpdateDARK.svg", width=220)
 
-# Display the appropriate logo based on the visitor's browser/device theme.
-dark_logo = base64.b64encode(
-    Path("MilnovaLogoUpdateDARK.svg").read_bytes()
-).decode("utf-8")
-
-light_logo = base64.b64encode(
-    Path("MilnovaLogoUpdateLIGHTMODE.svg").read_bytes()
-).decode("utf-8")
-
-# Show the appropriate logo based on the visitor's device/browser theme
-st.markdown(
-    f"""
-    <style>
-        /* Default: use the white-text logo for dark mode */
-        .milnova-logo-dark {{
-            display: block;
-            width: 220px;
-            height: auto;
-        }}
-
-        .milnova-logo-light {{
-            display: none;
-            width: 220px;
-            height: auto;
-        }}
-
-        /* When the browser/device is in light mode, swap to the dark-text logo */
-        @media (prefers-color-scheme: light) {{
-            .milnova-logo-dark {{
-                display: none;
-            }}
-
-            .milnova-logo-light {{
-                display: block;
-            }}
-        }}
-    </style>
-
-    <img
-        src="data:image/svg+xml;base64,{dark_logo}"
-        class="milnova-logo-dark"
-        alt="Milnova Software Solutions logo"
-    />
-
-    <img
-        src="data:image/svg+xml;base64,{light_logo}"
-        class="milnova-logo-light"
-        alt="Milnova Software Solutions logo"
-    />
-    """,
-    unsafe_allow_html=True
+st.title("Compare Life Expectancy by Country")
+st.caption("Milnova Software Solutions")
+st.write(
 )
 
 # App heading
