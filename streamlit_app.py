@@ -107,7 +107,7 @@ use_light_logo = st.toggle(
     "Use light-background logo",
     key="logo_mode_toggle",
     help="Turn this on when using Streamlit's light theme."
-
+)
 # App heading
 st.title("Compare Life Expectancy by Country")
 st.caption("Milnova Software Solutions")
