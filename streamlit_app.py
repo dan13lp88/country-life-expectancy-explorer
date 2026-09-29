@@ -78,7 +78,7 @@ except Exception as error:
 header_logo, header_title = st.columns([1, 8])
 
 with header_logo:
-    st.image("logo.png", width=85)
+    st.image("MilnovaLogo.png", width=85)
 
 with header_title:
     st.title("Compare Life Expectancy by Country")
