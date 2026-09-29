@@ -86,9 +86,19 @@ light_logo = base64.b64encode(
 ).decode("utf-8")
 
 # Display the appropriate logo based on the visitor's browser/device theme.
+dark_logo = base64.b64encode(
+    Path("MilnovaLogoUpdateDARK.svg").read_bytes()
+).decode("utf-8")
+
+light_logo = base64.b64encode(
+    Path("MilnovaLogoUpdateLIGHT.svg").read_bytes()
+).decode("utf-8")
+
+# Show the appropriate logo based on the visitor's device/browser theme
 st.markdown(
     f"""
     <style>
+        /* Default: use the white-text logo for dark mode */
         .milnova-logo-dark {{
             display: block;
             width: 220px;
@@ -101,6 +111,7 @@ st.markdown(
             height: auto;
         }}
 
+        /* When the browser/device is in light mode, swap to the dark-text logo */
         @media (prefers-color-scheme: light) {{
             .milnova-logo-dark {{
                 display: none;
