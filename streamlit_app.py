@@ -77,8 +77,6 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-if st.button("Refresh logo for theme"):
-    st.rerun()
 current_theme = st.context.theme.type
 is_light_theme = current_theme == "light"
 
