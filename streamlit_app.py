@@ -91,21 +91,22 @@ current_theme = st.context.theme.type
 is_light_theme = current_theme == "light"
 
 # Set the logo toggle default when the app first opens.
+is_light_theme = st.context.theme.type == "light"
+
 if "logo_mode_toggle" not in st.session_state:
     st.session_state.logo_mode_toggle = is_light_theme
 
-# Display a toggle that lets the visitor override the logo choice.
-use_light_logo = st.toggle(
-    "Use light-background logo",
-    key="logo_mode_toggle",
-    help="Turn this on for the dark-text logo designed for a light background."
-)
-
-# Show the appropriate logo.
-if use_light_logo:
+# Display the appropriate logo first.
+if st.session_state.logo_mode_toggle:
     st.image("MilnovaLogoUpdateLIGHT.svg", width=220)
 else:
     st.image("MilnovaLogoUpdateDARK.svg", width=220)
+
+# Place the toggle directly below the company logo.
+use_light_logo = st.toggle(
+    "Use light-background logo",
+    key="logo_mode_toggle",
+    help="Turn this on when using Streamlit's light theme."
 
 # App heading
 st.title("Compare Life Expectancy by Country")
