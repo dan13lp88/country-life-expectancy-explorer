@@ -10,6 +10,16 @@ st.set_page_config(
     page_title="Compare Life Expectancy by Country",
     layout="wide"
 )
+st.markdown(
+    """
+    <style>
+        [data-testid="stImage"] {
+            margin-left: -16px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # World Bank public API:
 # SP.DYN.LE00.IN = Life expectancy at birth, total (years)
