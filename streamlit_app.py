@@ -75,7 +75,7 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-st.image("MilnovaLogoUpdateDARK.png", width=220)
+st.image("MilnovaLogoUpdateDARK.svg", width=220)
 
 # App heading
 st.title("Compare Life Expectancy by Country")
