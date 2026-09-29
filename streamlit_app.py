@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import requests
+from pathlib import Path
+import base64
 
 # Configure the page
 st.set_page_config(
@@ -75,7 +77,54 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-st.image("MilnovaLogoUpdateDARK.svg", width=220)
+dark_logo = base64.b64encode(
+    Path("MilnovaLogoUpdateDARK.svg").read_bytes()
+).decode("utf-8")
+
+light_logo = base64.b64encode(
+    Path("MilnovaLogoUpdateLIGHT.svg").read_bytes()
+).decode("utf-8")
+
+# Display the appropriate logo based on the visitor's browser/device theme.
+st.markdown(
+    f"""
+    <style>
+        .milnova-logo-dark {{
+            display: block;
+            width: 220px;
+            height: auto;
+        }}
+
+        .milnova-logo-light {{
+            display: none;
+            width: 220px;
+            height: auto;
+        }}
+
+        @media (prefers-color-scheme: light) {{
+            .milnova-logo-dark {{
+                display: none;
+            }}
+
+            .milnova-logo-light {{
+                display: block;
+            }}
+        }}
+    </style>
+
+    <img
+        src="data:image/svg+xml;base64,{dark_logo}"
+        class="milnova-logo-dark"
+        alt="Milnova Software Solutions logo"
+    />
+
+    <img
+        src="data:image/svg+xml;base64,{light_logo}"
+        class="milnova-logo-light"
+        alt="Milnova Software Solutions logo"
+    />
+    """,
+    unsafe_allow_html=True
 
 # App heading
 st.title("Compare Life Expectancy by Country")
