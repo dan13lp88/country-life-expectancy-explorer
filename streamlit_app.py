@@ -80,10 +80,24 @@ except Exception as error:
 is_light_theme = st.context.theme.type == "light"
 
 # Default the toggle based on the active Streamlit theme.
+current_theme = st.context.theme.type
+is_light_theme = current_theme == "light"
+
+# Initialize the toggle the first time the app runs.
+if "logo_mode_toggle" not in st.session_state:
+    st.session_state.logo_mode_toggle = is_light_theme
+    st.session_state.previous_theme = current_theme
+
+# If the visitor changes the Streamlit theme, update the logo toggle.
+elif st.session_state.previous_theme != current_theme:
+    st.session_state.logo_mode_toggle = is_light_theme
+    st.session_state.previous_theme = current_theme
+
+# Allow the visitor to override the default logo choice if needed.
 use_light_logo = st.toggle(
     "Use light-background logo",
-    value=is_light_theme,
-    help="This defaults based on your Streamlit light/dark theme setting."
+    key="logo_mode_toggle",
+    help="Defaults to match the active Streamlit theme."
 )
 
 # Display the matching logo.
@@ -91,10 +105,6 @@ if use_light_logo:
     st.image("MilnovaLogoUpdateLIGHT.svg", width=220)
 else:
     st.image("MilnovaLogoUpdateDARK.svg", width=220)
-
-st.title("Compare Life Expectancy by Country")
-st.caption("Milnova Software Solutions")
-st.write(
 )
 
 # App heading
