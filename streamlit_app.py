@@ -77,43 +77,33 @@ except Exception as error:
     st.stop()
 
 # App title and instructions
-is_light_theme = st.context.theme.type == "light"
-
-# Default the toggle based on the active Streamlit theme.
 current_theme = st.context.theme.type
 is_light_theme = current_theme == "light"
 
-# Initialize the toggle the first time the app runs.
+# Set the logo toggle default when the app first opens.
 if "logo_mode_toggle" not in st.session_state:
     st.session_state.logo_mode_toggle = is_light_theme
-    st.session_state.previous_theme = current_theme
 
-# If the visitor changes the Streamlit theme, update the logo toggle.
-elif st.session_state.previous_theme != current_theme:
-    st.session_state.logo_mode_toggle = is_light_theme
-    st.session_state.previous_theme = current_theme
-
-# Allow the visitor to override the default logo choice if needed.
+# Display a toggle that lets the visitor override the logo choice.
 use_light_logo = st.toggle(
     "Use light-background logo",
     key="logo_mode_toggle",
-    help="Defaults to match the active Streamlit theme."
+    help="Turn this on for the dark-text logo designed for a light background."
 )
 
-# Display the matching logo.
+# Show the appropriate logo.
 if use_light_logo:
     st.image("MilnovaLogoUpdateLIGHT.svg", width=220)
 else:
     st.image("MilnovaLogoUpdateDARK.svg", width=220)
-)
 
 # App heading
 st.title("Compare Life Expectancy by Country")
 st.caption("Milnova Software Solutions")
 st.write(
-    "Explore life expectancy trends and compare two countries across a selected year range."
+    "Explore life expectancy trends and compare two countries across a "
+    "selected year range."
 )
-
 # Available selections
 countries = sorted(data["Country"].unique().tolist())
 min_year = int(data["Year"].min())
