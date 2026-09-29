@@ -14,7 +14,7 @@ st.markdown(
     """
     <style>
         [data-testid="stImage"] {
-            margin-left: -16px;
+            margin-left: -28px;
         }
     </style>
     """,
